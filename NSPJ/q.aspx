@@ -23,6 +23,7 @@
             border: 1px dashed red;
             position: relative;
         }
+        .a a{clear:both;}
 
             .a h1 {
                 clear: both;
@@ -37,27 +38,23 @@
     </style>
     <script type="text/javascript">
         function addAnother() {
-            //var listString = JSON.parse(sJSON);
-
+            //get bookmarked string
+            var ch = '<%=  Session["BookmarkList"] %>';
+            var gg = ch.split('~');
+            //alert(gg);
+            
             var s = "";
-
+            //get search result string
             var listString = document.getElementById('<%= HiddenField1.ClientID%>').value;
-            alert(listString);
-            //var listString = $('#Label1').text();
-            //alert(listString);
-
-            //var listString = document.getElementById("HiddenField1").value;
-
-            //var listString = $('#HiddenField1').val();
-            //alert(listString);
+            alert(listString);            
             var listArray = listString.split('~');
             var total = parseInt(<%= Session["count"] %>);
-            alert(total);
+            //alert(total);
             // Now you have an array in javascript of each value
 
             for (var counter = 0; counter < total ; counter++) {
                 s = listArray[counter];
-
+                
                 var ul = document.getElementById("list");
                 //var children = ul.children.length + 1;
                 var li = document.createElement("li");
@@ -67,12 +64,26 @@
                 var btn = document.createElement("INPUT");
                 btn.setAttribute("id", s);
                 btn.setAttribute("type", "button");
-                btn.setAttribute("value", "Add to bookmark");
                 btn.setAttribute("class", "btn btn-info Button2");
-                btn.onclick = function () { save(this.id) };
+                for (var counter1 = 0; counter1 < ch.length; counter1++) {
+                    var In = gg[counter1];
+                    
+                    if (In === s) {
+                        btn.setAttribute("value", "Added");
+                        btn.disabled = true;
+                        break;
+                    }
+                    else {
+                        btn.setAttribute("value", "Add to bookmark");
+                        btn.onclick = function () { save(this.id) };
+                    }
+                }
+                
                 //var t = document.createTextNode("Add to bookmark");
                 //btn.appendChild(t);
                 div.appendChild(btn);
+                var linebreak= document.createElement("br");
+                div.appendChild(linebreak);
                 var c = document.createElement("a");
                 c.setAttribute('href', "UserProfile.aspx");
 
@@ -97,9 +108,9 @@
             buttonclicked.setAttribute("value", "Added");
             buttonclicked.disabled = true;
             bookmarklist.push(id);
-            var str = bookmarklist.toString();
+            <%--var str = bookmarklist.toString();
             document.getElementById('<%= HiddenField1.ClientID%>').value = str;
-            alert(document.getElementById('<%= HiddenField1.ClientID%>').value);
+            alert(document.getElementById('<%= HiddenField1.ClientID%>').value);--%>
         };
     </script>
 

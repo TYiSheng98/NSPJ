@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -53,6 +54,34 @@ SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
                 if (TextBox1.Text.Equals(ID) && TextBox2.Text.Equals(password))
                 {
                     Session["ID"] = ID;
+
+                    ArrayList BList = new ArrayList();
+                    using (SqlConnection con = new
+        SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
+        "nspjConnectionString"].ConnectionString))
+                    {
+                        
+                        String bquery = "SELECT MarkedPeople FROM[nspj].[dbo].[Bookmark] where EmployerID = @a ";
+                        SqlCommand cmd1 = new SqlCommand(bquery, connection);
+                        cmd1.Parameters.AddWithValue("@a", (String)Session["ID"]);
+                        using (SqlDataReader dr = cmd1.ExecuteReader())
+                        {
+                            if (dr.HasRows)
+                            {
+                                while (dr.Read())
+                                {
+
+                                    BList.Add(dr["MarkedPeople"].ToString());
+                                }
+                            }
+
+                        }
+
+                        
+                        Session["BookmarkList"] = ArrayListToString(ref BList);
+
+                    }
+
                     Response.Redirect("Default.aspx");
                 }
                 else
@@ -62,6 +91,23 @@ SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
 
 
 
+        }
+        private string ArrayListToString(ref ArrayList _ArrayList)
+        {
+            int intCount;
+            string strFinal = "";
+
+            for (intCount = 0; intCount <= _ArrayList.Count - 1; intCount++)
+            {
+                if (intCount > 0)
+                {
+                    strFinal += "~";
+                }
+
+                strFinal += _ArrayList[intCount].ToString();
+            }
+
+            return strFinal;
         }
         public void MsgBox(String msg)
         {

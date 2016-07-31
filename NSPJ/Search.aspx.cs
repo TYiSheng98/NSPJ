@@ -13,13 +13,15 @@ namespace NSPJ
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            var eventTarget = Request.Form["__EVENTTARGET"].ToString();
-            
-            if (eventTarget == "lol")
+            if (IsPostBack)
             {
-                string parameter = Request["__EVENTARGUMENT"];
-                Label1.Text = parameter;
-               
+                
+                string q= Request["__EVENTTARGET"];
+                if (q == "lol")
+                {
+                    string parameter = Request["__EVENTARGUMENT"]; // parameter
+                    Label1.Text = parameter;
+                }
             }
         }
 

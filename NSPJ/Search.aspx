@@ -74,11 +74,12 @@
                 li.setAttribute("id", "element" + counter);
                 var div = document.createElement("div");
                 div.setAttribute("class", "a");
-                var btn = document.createElement("BUTTON");
+                var btn = document.createElement("INPUT");
                 btn.setAttribute("id", s);
                 btn.setAttribute("type", "button");
                 btn.setAttribute("value", "Add to bookmark");
                 btn.setAttribute("class", "btn btn-info Button2");
+                
                 btn.onclick = function () { save(this.id) };
                 //var t = document.createTextNode("Add to bookmark");
                 //btn.appendChild(t);
@@ -109,14 +110,15 @@
             buttonclicked.setAttribute("value", "Added");
             buttonclicked.disabled = true;
             bookmarklist.push(id);
-            var str = bookmarklist.toString();
-            document.getElementById('<%= HiddenField1.ClientID%>').value = str;
-            alert(document.getElementById('<%= HiddenField1.ClientID%>').value);
-            __doPostBack('lol',id);
+            
             //alert(typeof document.getElementById('<%= HiddenField1.ClientID%>').value);
 
         };
 
+        var str = bookmarklist.toString();
+            document.getElementById('<%= HiddenField1.ClientID%>').value = str;
+            alert(document.getElementById('<%= HiddenField1.ClientID%>').value);
+            __doPostBack('lol', document.getElementById('<%= HiddenField1.ClientID%>').value);
     </script>
 
     <ul id="list" class="list-group">
@@ -156,6 +158,6 @@
         </div>--%>
     </section>
 
-    </button>
+    <%--</button>--%>
      
 </asp:Content>
