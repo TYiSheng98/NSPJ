@@ -56,32 +56,8 @@ SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
                     Session["ID"] = ID;
 
                     ArrayList BList = new ArrayList();
-                    using (SqlConnection con = new
-        SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
-        "nspjConnectionString"].ConnectionString))
-                    {
-                        
-                        String bquery = "SELECT MarkedPeople FROM[nspj].[dbo].[Bookmark] where EmployerID = @a ";
-                        SqlCommand cmd1 = new SqlCommand(bquery, connection);
-                        cmd1.Parameters.AddWithValue("@a", (String)Session["ID"]);
-                        using (SqlDataReader dr = cmd1.ExecuteReader())
-                        {
-                            if (dr.HasRows)
-                            {
-                                while (dr.Read())
-                                {
-
-                                    BList.Add(dr["MarkedPeople"].ToString());
-                                }
-                            }
-
-                        }
-
-                        
-                        Session["BookmarkList"] = ArrayListToString(ref BList);
-
-                    }
-
+                    BList = qwerty();
+                     Session["BookmarkList"] = ArrayListToString(ref BList);
                     Response.Redirect("Default.aspx");
                 }
                 else
@@ -91,6 +67,36 @@ SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
 
 
 
+        }
+        private ArrayList qwerty()
+        {
+            ArrayList Bookmarklist = new ArrayList();
+            using (SqlConnection con = new
+       SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
+       "nspjConnectionString"].ConnectionString))
+            {
+                con.Open();
+                String bquery = "SELECT MarkedPeople FROM[nspj].[dbo].[Bookmark] where EmployerID = @a ";
+                SqlCommand cmd1 = new SqlCommand(bquery, con);
+                cmd1.Parameters.AddWithValue("@a", (String)Session["ID"]);
+                using (SqlDataReader dr = cmd1.ExecuteReader())
+                {
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+
+                            Bookmarklist.Add(dr["MarkedPeople"].ToString());
+                        }
+                    }
+
+                }
+
+
+
+                con.Close();
+            }
+            return Bookmarklist;
         }
         private string ArrayListToString(ref ArrayList _ArrayList)
         {

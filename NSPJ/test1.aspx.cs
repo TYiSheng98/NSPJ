@@ -55,6 +55,7 @@ SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
         protected void Button1_Click1(object sender, EventArgs e)
         {
             Label1.Text = DropDownList2.SelectedIndex.ToString();
+            //selectitem.text
         }
     }
 }

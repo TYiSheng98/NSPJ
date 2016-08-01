@@ -2,6 +2,10 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server" onload="javascript:addAnother();">
     <style>
+        #ResultCounter{
+            margin: 0 auto;
+
+        }
         #list {
             list-style: none;
         }
@@ -37,24 +41,39 @@
             }
     </style>
     <script type="text/javascript">
-        function addAnother() {
-            //get bookmarked string
+        //get bookmarked string
             var ch = '<%=  Session["BookmarkList"] %>';
             var gg = ch.split('~');
-            //alert(gg);
             
-            var s = "";
-            //get search result string
-            var listString = document.getElementById('<%= HiddenField1.ClientID%>').value;
-            alert(listString);            
-            var listArray = listString.split('~');
+        function addAnother() {
+            
             var total = parseInt(<%= Session["count"] %>);
-            //alert(total);
+            var header = document.getElementById('ResultCounter');
+            header.innerHTML = total + " Results Found";
+            
+            //get search result string
+            //var listString = document.getElementById('HiddenField1.ClientID%>').value;
+            //alert(listString);    
+            var listString = '<%=  Session["NameList"] %>';
+            var listArray = listString.split('~');
+
+            var listString1 = '<%=  Session["IndustryList"] %>';
+            var listArray1 = listString1.split('~');
+
+            var listString2 = '<%=  Session["SkillList"] %>';
+            var listArray2 = listString2.split('~');
+
+
+            
+            
+            
             // Now you have an array in javascript of each value
 
             for (var counter = 0; counter < total ; counter++) {
-                s = listArray[counter];
-                
+                var name = listArray[counter];
+                var industry = listArray1[counter];
+                var skill = listArray2[counter];
+
                 var ul = document.getElementById("list");
                 //var children = ul.children.length + 1;
                 var li = document.createElement("li");
@@ -62,25 +81,24 @@
                 var div = document.createElement("div");
                 div.setAttribute("class", "a");
                 var btn = document.createElement("INPUT");
-                btn.setAttribute("id", s);
+                btn.setAttribute("id", name);
                 btn.setAttribute("type", "button");
                 btn.setAttribute("class", "btn btn-info Button2");
+                btn.setAttribute("value", "Add to bookmark");
                 for (var counter1 = 0; counter1 < ch.length; counter1++) {
                     var In = gg[counter1];
                     
-                    if (In === s) {
+                    if (In === name) {
                         btn.setAttribute("value", "Added");
                         btn.disabled = true;
                         break;
                     }
-                    else {
-                        btn.setAttribute("value", "Add to bookmark");
-                        btn.onclick = function () { save(this.id) };
-                    }
+                    
                 }
                 
                 //var t = document.createTextNode("Add to bookmark");
                 //btn.appendChild(t);
+                btn.onclick = function () { save(this.id) };
                 div.appendChild(btn);
                 var linebreak= document.createElement("br");
                 div.appendChild(linebreak);
@@ -89,13 +107,13 @@
 
                 var h1 = document.createElement("h1"); // Create a <h1> element
                 //h.setAttribute("class", "lol h5");
-                var t = document.createTextNode(s);     // Create a text node
+                var t = document.createTextNode(name);     // Create a text node
                 h1.appendChild(t);                  // Append the text to <h1>
                 c.appendChild(h1);
                 div.appendChild(c);
                 var h5 = document.createElement("h5"); // Create a <h5> element
                 //h5.setAttribute("class", "badge");
-                var t = document.createTextNode("Industry and skill");     // Create a text node
+                var t = document.createTextNode(skill+"("+ industry+")");     // Create a text node
                 h5.appendChild(t);                                   // Append the text to <h1>
                 div.appendChild(h5);
                 li.appendChild(div);
@@ -107,15 +125,17 @@
             var buttonclicked = document.getElementById(id);
             buttonclicked.setAttribute("value", "Added");
             buttonclicked.disabled = true;
-            bookmarklist.push(id);
+            ch +="~" + id;
+            __doPostBack('lol', id);
+            //bookmarklist.push(id);
             <%--var str = bookmarklist.toString();
             document.getElementById('<%= HiddenField1.ClientID%>').value = str;
             alert(document.getElementById('<%= HiddenField1.ClientID%>').value);--%>
         };
     </script>
-
+    <h1 id ="ResultCounter">0 Results Found!</h1>
     <ul id="list" class="list-group">
-        <asp:HiddenField ID="HiddenField1" runat="server" />
+        <%--<asp:HiddenField ID="HiddenField1" runat="server" />--%>
     </ul>
     <%-- <section>
         <div class="lol" id="box1">

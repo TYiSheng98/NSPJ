@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Security.Cryptography;
 using System.IO;
+using System.Text;
 
 namespace NSPJ
 {
@@ -13,8 +14,8 @@ namespace NSPJ
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["t"] = "hello";
-            Page.ClientScript.RegisterStartupScript(this.GetType(), "myFunction", "test()", true);
+            //Session["t"] = "hello";
+            //Page.ClientScript.RegisterStartupScript(this.GetType(), "myFunction", "test()", true);
         }
 
         protected void Button2_Click(object sender, EventArgs e)
@@ -30,7 +31,7 @@ myAes.Key, myAes.IV);
 //                string roundtrip = DecryptStringFromBytes_Aes(encrypted,
 //myAes.Key, myAes.IV);
 
-                Label2.Text = encrypted.ToString();
+                Label2.Text = Convert.ToBase64String(encrypted);
 
 
             }
@@ -129,5 +130,20 @@ csDecrypt))
             return plaintext;
 
         }
+
+        //protected void Button3_Click(object sender, EventArgs e)
+        //{
+        //    string roundtrip;
+        //    byte[] qw = System.Text.Encoding.UTF16.GetBytes(TextBox2.Text);
+        //    using (Aes myAes = Aes.Create())
+        //    {
+
+        //        // Decrypt the bytes to a string.
+        //       roundtrip = DecryptStringFromBytes_Aes(qw,myAes.Key, myAes.IV);
+
+               
+        //    }
+        //    Label3.Text = roundtrip;
+        //}
     }
 }
