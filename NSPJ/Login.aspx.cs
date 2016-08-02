@@ -57,6 +57,7 @@ SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
 
                     ArrayList BList = new ArrayList();
                     BList = qwerty();
+                    Session["bookmarkcounter"] = BList.Count;
                      Session["BookmarkList"] = ArrayListToString(ref BList);
                     Response.Redirect("Default.aspx");
                 }
