@@ -10,7 +10,7 @@
                         <label for="Cname" class="col-lg-2 control-label">Company Name</label>
                         <div class="col-lg-10">
                             <asp:TextBox ID="Cname" runat="server" CssClass="form-control"></asp:TextBox>
-                           <asp:RequiredFieldValidator runat="server" ID="RequiredFieldValidator1" ControlToValidate="CName" ErrorMessage="Please enter your name!" />
+                           <%--<asp:RequiredFieldValidator runat="server" ID="RequiredFieldValidator1" ControlToValidate="CName" ErrorMessage="Please enter your name!" />--%>
                             
                         </div>
                     </div>
@@ -143,7 +143,7 @@
                     
                     <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-2">
-                            <asp:Button ID="EClear" runat="server" Text="Clear" CssClass="btn btn-default" OnClick="EClear_Click" />
+                            <asp:Button ID="EClear" runat="server" Text="Clear" CssClass="btn btn-default" OnClick="EClear_Click"   />
                             <asp:Button ID="ECreate" runat="server" Text="Create Employer" CssClass="btn btn-primary" OnClick="ECreate_Click" />
                             
                         </div>

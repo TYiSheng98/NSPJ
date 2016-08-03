@@ -13,10 +13,17 @@
             clear: both;
             text-align: center;
         }
-
-        .col-md-6 {
+        .qwer > *{
+            display:inline;
         }
-
+        .testing {
+                margin: 10px 0;
+    border-radius:20px 30px;
+    float: left;
+    width: 50%;
+    padding: 1%;
+        }
+        .testing h2{text-align:center;}
         #b1 {
             background-color: #40ff00;
         }
@@ -32,6 +39,23 @@
         #b4 {
             background-color: #99ff99;
         }
+        #header{
+            font-weight:bold;
+            font-style:italic;
+            font-size:35px;
+        }
+        .mb1{
+            background-color:#fcd04b;
+        }
+        .bb2{
+            background-color:#2ac56c;
+        }
+        .ib3{
+            background-color:#9e54bd;
+        }
+        .dmb4{
+            background-color:#f06060;
+        }
     </style>
     <div class="alert alert-dismissible alert-info">
     <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
@@ -40,25 +64,42 @@
         <div id="logoM">
             <img alt="" class="troll" src="Resources/windows.png" />
             <br />
-            Find all sorts of talents here!
+            <h1 id ="header">Find the talents you need here!</h1>
         </div>
-        <p>
-            <asp:DropDownList ID="SearchList" runat="server">
+        <p class="qwer">
+            <asp:DropDownList ID="SearchList" runat="server"  CssClass="form-control" Width="20%">
                 <asp:ListItem Text="All" Value="1"></asp:ListItem>
                 <asp:ListItem Text="Industry" Value="2"></asp:ListItem>
                 <asp:ListItem Text="Skill" Value="3"></asp:ListItem>
             </asp:DropDownList>
-            <asp:TextBox ID="querystring" runat="server" placeholder="Search la!" ></asp:TextBox>
+            <asp:TextBox ID="querystring" runat="server" placeholder="Search la!" CssClass="form-control"></asp:TextBox>
             <asp:Button ID="SearchButton" runat="server" Text="Search" CssClass="btn btn-info" OnClick="SearchButton_Click1" />
         </p>
-
-
-        
-
-
     </div>
+    <section id="123">
+        <div id="b1" class="testing">
+            <h2>Medical Healthcare Prospects</h2>
+            <p>Find passionate candidates who want to make an positive impact on others lives!</p>
+            <asp:Button ID="mButton1" runat="server" Text="Click here!"  CssClass="btn btn-info mb1" OnClick="mButton1_Click" />
+        </div>
+        <div id="b2" class="testing">
+            <h2>Business Management Prospects</h2>
+            <p>Find your potential business guru ?</p>
+            <asp:Button ID="bButton2" runat="server" Text="Click here!"  CssClass="btn btn-info bb2" OnClick="bButton2_Click" />
+        </div>
+        <div id="b3" class="testing">
+            <h2>Information Technology Prospects</h2>
+            <p>Get your high tech people here! </p>
+            <asp:Button ID="itButton3" runat="server" Text="Click here!"  CssClass="btn btn-info ib3" OnClick="itButton3_Click" />
+        </div>
+        <div id="b4" class="testing">
+            <h2>Digital Media Prospects</h2>
+            <p>Spend no time to find prospects who have limitless creativity in the digital media field! </p>
+            <asp:Button ID="dmButton4" runat="server" Text="Click here!"  CssClass="btn btn-info dmb4" OnClick="dmButton4_Click" />
+        </div>
+    </section>
 
-    <div class="row">
+    <%--<div >
         <div class="col-md-6" id="b1">
             <h2>Medical Healthcare Prospects</h2>
             <p>
@@ -80,7 +121,7 @@
         </div>
 
     </div>
-    <div class="row">
+    <div >
         <div class="col-md-6" id="b3">
             <h2>Information Technology Prospects</h2>
             <p>
@@ -100,6 +141,6 @@
             </p>
         </div>
 
-    </div>
+    </div>--%>
 
 </asp:Content>

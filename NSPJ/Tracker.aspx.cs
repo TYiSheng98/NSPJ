@@ -28,8 +28,8 @@ namespace NSPJ
             MultiView1.ActiveViewIndex = 1;
             String q = (String)(Session["BookmarkList"]);
             String[] blist = q.Split('~');
-            Array.Sort(blist);
-            int abc = Convert.ToInt32(Session["bookmarkcounter"]);
+           
+            int abc = blist.Length;
             ArrayList List1 = new ArrayList();
             ArrayList List2 = new ArrayList();
 

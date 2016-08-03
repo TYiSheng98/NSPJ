@@ -3,5 +3,6 @@
 
     <asp:FileUpload ID="FileUpload1" runat="server" />
     <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
+    &nbsp;&nbsp;&nbsp;
     <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
 </asp:Content>

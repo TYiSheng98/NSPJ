@@ -87,6 +87,7 @@ SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
                     string parameter = Request["__EVENTARGUMENT"]; // parameter
                     MsgBox( parameter);
 
+
                     using (SqlConnection connection123 = new
 SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
 "nspjConnectionString"].ConnectionString))
@@ -119,7 +120,7 @@ SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
        "nspjConnectionString"].ConnectionString))
             {
                 con.Open();
-                String bquery = "SELECT MarkedPeople FROM[nspj].[dbo].[Bookmark] where EmployerID = @a ";
+                String bquery = "SELECT MarkedPeople FROM[nspj].[dbo].[Bookmark] where EmployerID = @a order by [MarkedPeople]";
                 SqlCommand cmd1 = new SqlCommand(bquery, con);
                 cmd1.Parameters.AddWithValue("@a", (String)Session["ID"]);
                 using (SqlDataReader dr = cmd1.ExecuteReader())

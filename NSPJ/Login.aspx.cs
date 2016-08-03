@@ -21,50 +21,56 @@ namespace NSPJ
         {
             String ID="";
             String password="";
-
-            using (SqlConnection connection = new
-SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
-"nspjConnectionString"].ConnectionString))
+            try
             {
-                
-                connection.Open();
-                String query;
-                query = " SELECT EmployerID,Password FROM[nspj].[dbo].[EMP] where EmployerID =@1 and Password =@2";
-                SqlCommand cmd = new SqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@1", TextBox1.Text);
-                cmd.Parameters.AddWithValue("@2", TextBox2.Text);
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                dt.Clear();
-                da.Fill(dt);
-                ID = dt.Rows[0][0].ToString();
-                password = dt.Rows[0][1].ToString();
-
-                //using (SqlDataReader reader = cmd.ExecuteReader())
-                //{
-
-                //        while (reader.Read())
-                //        {
-
-                //            ID = reader.GetString(1);
-                //            password = reader.GetString(2);
-                //             }
-
-                //}
-                if (TextBox1.Text.Equals(ID) && TextBox2.Text.Equals(password))
+                using (SqlConnection connection = new
+    SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
+    "nspjConnectionString"].ConnectionString))
                 {
-                    Session["ID"] = ID;
 
-                    ArrayList BList = new ArrayList();
-                    BList = qwerty();
-                    Session["bookmarkcounter"] = BList.Count;
-                     Session["BookmarkList"] = ArrayListToString(ref BList);
-                    Response.Redirect("Default.aspx");
+                    connection.Open();
+                    String query;
+                    query = " SELECT EmployerID,Password FROM[nspj].[dbo].[EMP] where EmployerID =@1 and Password =@2";
+                    SqlCommand cmd = new SqlCommand(query, connection);
+                    cmd.Parameters.AddWithValue("@1", TextBox1.Text);
+                    cmd.Parameters.AddWithValue("@2", TextBox2.Text);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    dt.Clear();
+                    da.Fill(dt);
+                    ID = dt.Rows[0][0].ToString();
+                    password = dt.Rows[0][1].ToString();
+
+                    //using (SqlDataReader reader = cmd.ExecuteReader())
+                    //{
+
+                    //        while (reader.Read())
+                    //        {
+
+                    //            ID = reader.GetString(1);
+                    //            password = reader.GetString(2);
+                    //             }
+
+                    //}
+                    if (TextBox1.Text.Equals(ID) && TextBox2.Text.Equals(password))
+                    {
+                        Session["ID"] = ID;
+
+                        ArrayList BList = new ArrayList();
+                        BList = qwerty();
+                        Session["bookmarkcounter"] = BList.Count;
+                        Session["BookmarkList"] = ArrayListToString(ref BList);
+                        Response.Redirect("Default.aspx");
+                    }
+                    else
+                        MsgBox("Login failed.Please try again!");
                 }
-                else
-                    MsgBox("Login failed.Please try again!");
+            }catch (Exception ex)
+            {
+                MsgBox("Login Failed!");
             }
-            
+
+
 
 
 

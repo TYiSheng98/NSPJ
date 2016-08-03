@@ -24,7 +24,25 @@ namespace NSPJ
 
             Response.Redirect("q.aspx?query=" + querystring.Text + "&cat=" + SearchList.SelectedIndex);
         }
-        
 
+        protected void mButton1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("q.aspx?query=Medicial/Healthcare" + "&cat=1");
+        }
+
+        protected void bButton2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("q.aspx?query=Business Management" + "&cat=1");
+        }
+
+        protected void itButton3_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("q.aspx?query=Information Technology" + "&cat=1");
+        }
+
+        protected void dmButton4_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("q.aspx?query=Digital Media" + "&cat=1");
+        }
     }
 }

@@ -10,6 +10,7 @@ namespace NSPJ
 {
     public partial class EmployerRegistration : System.Web.UI.Page
     {
+        int counter = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -35,7 +36,23 @@ SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
                 connection.Open();
                 cmd.ExecuteNonQuery();
                 connection.Close();
+                counter++;
+                if (counter == 1)
+                {
+                    MsgBox("Created");
+                    RadioButtonList1.ClearSelection();
+                    RadioButtonList2.ClearSelection();
+                    Cname.Text = "";
+                    address.Text = "";
+                    PhoneNo.Text = "";
+                }
+                else
+                {
+                    MsgBox("try again!");
+                }
             }
+            
+
         }
 
 
@@ -67,16 +84,16 @@ SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
         //    MultiView1.ActiveViewIndex = 1;
         //}
 
-        protected void EClear_Click(object sender, EventArgs e)
-        {
-            Ename.Text = "";
-            RadioButtonList3.ClearSelection();
-            EPhoneNo.Text = "";
-            Eemail.Text = "";
-            UID.Text = "";
-            password.Text = "";
-            Designation.Text = "";
-        }
+        //protected void EClear_Click(object sender, EventArgs e)
+        //{
+        //    Ename.Text = "";
+        //    RadioButtonList3.ClearSelection();
+        //    EPhoneNo.Text = "";
+        //    Eemail.Text = "";
+        //    UID.Text = "";
+        //    password.Text = "";
+        //    Designation.Text = "";
+        //}
 
         protected void ECreate_Click(object sender, EventArgs e)
         {
@@ -108,20 +125,39 @@ SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
                 cmd.ExecuteNonQuery();
                 counter ++;
                 connection.Close();
+                if (counter == 1)
+                {
+                    MsgBox("Created");
+                    Ename.Text = "";
+                    RadioButtonList3.ClearSelection();
+                    EPhoneNo.Text = "";
+                    Eemail.Text = "";
+                    UID.Text = "";
+                    password.Text = "";
+                    Designation.Text = "";
+                }
+                else
+                {
+                    MsgBox("try again!");
+                }
             }
             //remeber to catch for sql error(duplicate PK,field not created)
-            if (counter == 1)
-            {
-                MsgBox("Created");
-            }
-            else
-            {
-                MsgBox("try again!");
-            }
+            
         }
         public void MsgBox(String msg)
         {
             Page.ClientScript.RegisterStartupScript(Page.GetType(), "Message Box", "<script language='javascript'>alert('" + msg + "')</script>");
+        }
+
+        protected void EClear_Click(object sender, EventArgs e)
+        {
+            Ename.Text = "";
+            RadioButtonList3.ClearSelection();
+            EPhoneNo.Text = "";
+            Eemail.Text = "";
+            UID.Text = "";
+            password.Text = "";
+            Designation.Text = "";
         }
     }
 }

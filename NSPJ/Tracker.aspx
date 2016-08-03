@@ -82,7 +82,7 @@
         var gg = ch.split('~');
             
         function addAnother() {
-            alert("1");
+            
             
             
             
@@ -98,7 +98,7 @@
             var listString2 = '<%=  Session["SList"] %>';
             var listArray2 = listString2.split('~');
 
-            alert("2");
+            
             
             
             
@@ -119,17 +119,8 @@
                 btn.setAttribute("id", name);
                 btn.setAttribute("type", "button");
                 btn.setAttribute("class", "btn btn-info Button2");
-                btn.setAttribute("value", "Add to bookmark");
-                for (var counter1 = 0; counter1 < ch.length; counter1++) {
-                    var In = gg[counter1];
-                    
-                    if (In === name) {
-                        btn.setAttribute("value", "Added");
-                        btn.disabled = true;
-                        break;
-                    }
-                    
-                }
+                btn.setAttribute("value", "Added");
+                btn.disabled = true;
                 
                 //var t = document.createTextNode("Add to bookmark");
                 //btn.appendChild(t);

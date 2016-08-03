@@ -4,6 +4,15 @@
         <style>
             .haha{float:right;}
         </style>
+         <script type="text/javascript">
+             function a() {
+                 
+                 var s = document.getElementById(<%= TextBox1.ClientID %>);
+                 
+                 s.setAttribute("disabled", "disabled");
+                 alert("test");
+             }
+         </script>
         
             <asp:Button ID="Button1" runat="server" Text="Edit" CssClass="haha" />
         <br />
@@ -15,20 +24,22 @@
     <section>
     <h2>Account Security</h2>
         <h3> ID: </h3>
-        <h3> Password: *********</h3>
+        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+        <h3> Password: </h3>
+        <asp:TextBox ID="TextBox1" runat="server" TextMode="Password"  ></asp:TextBox>
     </section>
     <section>
         <h2>Account Information</h2>
-        <h3>Name:</h3>
-        <h3>Gender: </h3>
+        <h3>Name:</h3><asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+        <h3>Gender: </h3><asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
+        <h3>Email: </h3><asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
     </section>
     <section>
     <h2>Company Details</h2>
-        <h3>Company:</h3>
-        <h3>Designation:</h3>
-        <h3>Email: </h3>
+        <h3>Company:</h3><asp:Label ID="Label5" runat="server" Text="Label"></asp:Label>
+        <h3>Designation:</h3><asp:Label ID="Label6" runat="server" Text="Label"></asp:Label>
+        
     </section>
-    <%--<h3>Your application description page.</h3>
-    <p>Use this area to provide additional information.</p>--%>
+   
         </div>
 </asp:Content>
