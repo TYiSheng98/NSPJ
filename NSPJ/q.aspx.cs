@@ -22,7 +22,7 @@ namespace NSPJ
             ArrayList SList = new ArrayList();
             
             var a = AES.Decrypt(Request.QueryString["query"], (string)Session["ID"]);
-            var c = AES.Decrypt(Request.QueryString["cat"], (string)Session["ID"]);
+            var c = Request.QueryString["cat"];
             int k = Convert.ToInt32(c);
             String query = "";
             using (SqlConnection connection = new

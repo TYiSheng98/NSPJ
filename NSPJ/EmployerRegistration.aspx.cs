@@ -122,6 +122,7 @@ SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
                 {
                     try
                     {
+                        int counter = 0;
                         SqlCommand cmd = new SqlCommand();
                         //cmd.CommandText = "INSERT INTO [nspj].[dbo].[Company] (CompanyName,CompanyAddress,CompanySize,CompanyLocation,CompanyNo)  VALUES ('" + Cname.Text + "','" + address.Text + "','" + RadioButtonList1.SelectedValue + "','" + RadioButtonList2.SelectedValue + "','" + PhoneNo.Text + "');";
                         cmd.CommandText = "INSERT INTO [nspj].[dbo].[CompanyTable] (CompanyName,CompanyAddress,CompanyRegion,CompanySize,CompanyContact)  VALUES (@0,@1,@2,@3,@4);";
@@ -133,8 +134,22 @@ SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
                         cmd.Connection = connection;
                         connection.Open();
                         cmd.ExecuteNonQuery();
-                        connection.Close();
                         counter++;
+                        connection.Close();
+                        if (counter == 1)
+                        {
+                            filldropdown();
+                            MsgBox("Created");
+                            RadioButtonList1.ClearSelection();
+                            RadioButtonList2.ClearSelection();
+                            Cname.Text = "";
+                            address.Text = "";
+                            PhoneNo.Text = "";
+                        }
+                        else
+                        {
+                            MsgBox("Profile not created! Please kindly contact database admin if the details entered are 100% accurate.");
+                        }
                     }
                     
                     catch (SqlException exception)
@@ -146,20 +161,7 @@ SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
                     }
                         
 
-                             if (counter == 1)
-                    {
-                        filldropdown();
-                        MsgBox("Created");
-                        RadioButtonList1.ClearSelection();
-                        RadioButtonList2.ClearSelection();
-                        Cname.Text = "";
-                        address.Text = "";
-                        PhoneNo.Text = "";
-                    }
-                    else
-                    {
-                        MsgBox("Profile not created! Please kindly contact database admin if the details entered are 100% accurate.");
-                    }
+                             
                 }
                 }
             }
@@ -309,7 +311,7 @@ SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
                     {
                         SqlCommand cmd = new SqlCommand();
                         //cmd.CommandText = "INSERT INTO [nspj].[dbo].[Company] (CompanyName,CompanyAddress,CompanySize,CompanyLocation,CompanyNo)  VALUES ('" + Cname.Text + "','" + address.Text + "','" + RadioButtonList1.SelectedValue + "','" + RadioButtonList2.SelectedValue + "','" + PhoneNo.Text + "');";
-                        cmd.CommandText = "INSERT INTO [nspj].[dbo].[EMP] (EmployerID,Password,EName,Gender,EPhoneNo,Email,Ecompany,Designation)  VALUES (@0,@1,@2,@3,@4,@5,@6,@7);";
+                        cmd.CommandText = "INSERT INTO [nspj].[dbo].[EMP] (EmployerID,Password,EName,Gender,EPhoneNo,Email,Ecompany,Designation,image)  VALUES (@0,@1,@2,@3,@4,@5,@6,@7,@8);";
                         cmd.Parameters.Add(new SqlParameter("@0", UID.Text));
                         cmd.Parameters.Add(new SqlParameter("@1", password.Text));
                         cmd.Parameters.Add(new SqlParameter("@2", Ename.Text));
@@ -329,6 +331,22 @@ SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
                         cmd.ExecuteNonQuery();
                         counter++;
                         connection.Close();
+                        if (counter == 1)
+                        {
+                            MsgBox("Created");
+                            Ename.Text = "";
+                            RadioButtonList3.ClearSelection();
+                            EPhoneNo.Text = "";
+                            Eemail.Text = "";
+                            UID.Text = "";
+                            password.Text = "";
+                            Designation.Text = "";
+                            FileUpload1.Attributes.Clear();
+                        }
+                        else
+                        {
+                            MsgBox("try again!");
+                        }
                     }
                 }
                 catch (SqlException ex)
@@ -338,22 +356,7 @@ SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
                         MsgBox("USER ID already been used!Please try again!");
                     }
 
-                    if (counter == 1)
-                    {
-                        MsgBox("Created");
-                        Ename.Text = "";
-                        RadioButtonList3.ClearSelection();
-                        EPhoneNo.Text = "";
-                        Eemail.Text = "";
-                        UID.Text = "";
-                        password.Text = "";
-                        Designation.Text = "";
-                        FileUpload1.Attributes.Clear();
-                    }
-                    else
-                    {
-                        MsgBox("try again!");
-                    }
+                    
                 } 
                 }
             
