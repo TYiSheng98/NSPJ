@@ -26,7 +26,7 @@
         <h3> ID: </h3>
         <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
         <h3> Password: </h3>
-        <asp:TextBox ID="TextBox1" runat="server" TextMode="Password"  ></asp:TextBox>
+        <asp:TextBox ID="TextBox1" runat="server"  ></asp:TextBox>
     </section>
     <section>
         <h2>Account Information</h2>

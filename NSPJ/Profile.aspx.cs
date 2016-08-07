@@ -42,8 +42,10 @@ namespace NSPJ
                
     }
             Label1.Text=ID ;
-             TextBox1.Text= password ;
-            
+            TextBox1.Attributes["type"] = "password";
+            TextBox1.Text = password;
+            TextBox1.ReadOnly = true;
+
             Label2.Text = name;
              Label3.Text= gender ;
              Label4.Text=email ;

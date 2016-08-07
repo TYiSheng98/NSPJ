@@ -181,12 +181,21 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Account\Web.config" />
+    <Content Include="Resources\a.png" />
+    <Content Include="Resources\c.png" />
+    <Content Include="Resources\js.png" />
+    <Content Include="Resources\m.png" />
+    <Content Include="Resources\m1.png" />
+    <Content Include="Resources\money.png" />
+    <Content Include="Resources\pr.png" />
+    <Content Include="Resources\ps.png" />
     <Content Include="UserProfile.aspx" />
     <Content Include="WebForm1.aspx" />
     <Content Include="WebForm2.aspx" />
     <Content Include="WebForm3.aspx" />
     <Content Include="WebForm4.aspx" />
     <Content Include="WebForm5.aspx" />
+    <Content Include="SearchResult.aspx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Resources\windows.png" />
     <Content Include="Login.aspx" />
@@ -507,6 +516,13 @@
     </Compile>
     <Compile Include="WebForm5.aspx.designer.cs">
       <DependentUpon>WebForm5.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SearchResult.aspx.cs">
+      <DependentUpon>SearchResult.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SearchResult.aspx.designer.cs">
+      <DependentUpon>SearchResult.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -20,8 +20,9 @@ namespace NSPJ
             ArrayList NList = new ArrayList();
             ArrayList IList = new ArrayList();
             ArrayList SList = new ArrayList();
-            var a = Request.QueryString["query"];
-            var c = Request.QueryString["cat"];
+            
+            var a = AES.Decrypt(Request.QueryString["query"], (string)Session["ID"]);
+            var c = AES.Decrypt(Request.QueryString["cat"], (string)Session["ID"]);
             int k = Convert.ToInt32(c);
             String query = "";
             using (SqlConnection connection = new

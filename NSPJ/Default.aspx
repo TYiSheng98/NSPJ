@@ -22,8 +22,12 @@
     float: left;
     width: 50%;
     padding: 1%;
+        font-style: italic;
+    font-size: 15px;
+    text-align:center;
         }
-        .testing h2{text-align:center;}
+        /*.testing h2{text-align:center;    font-weight: bold;}
+        .testing p {text-align:center; }*/
         #b1 {
             background-color: #40ff00;
         }
@@ -80,22 +84,30 @@
         <div id="b1" class="testing">
             <h2>Medical Healthcare Prospects</h2>
             <p>Find passionate candidates who want to make an positive impact on others lives!</p>
-            <asp:Button ID="mButton1" runat="server" Text="Click here!"  CssClass="btn btn-info mb1" OnClick="mButton1_Click" />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <img src="Resources/m.png" width="200px" height="160px" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="Resources/m1.png"  width="200px" height="160px"/><br />
+            <asp:Button ID="mButton1" runat="server" Text="Click here!"  CssClass="btn btn-warning " OnClick="mButton1_Click" Height="55px" Width="150px" />
         </div>
         <div id="b2" class="testing">
             <h2>Business Management Prospects</h2>
-            <p>Find your potential business guru ?</p>
-            <asp:Button ID="bButton2" runat="server" Text="Click here!"  CssClass="btn btn-info bb2" OnClick="bButton2_Click" />
+            <p>Find your potential business guru here!</p>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <img src="Resources/c.png" width="200px" height="160px" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="Resources/money.png" width="200px" height="160px" /><br />
+            <asp:Button ID="bButton2" runat="server" Text="Click here!"  CssClass="btn btn-warning " OnClick="bButton2_Click" Height="55px" Width="150px" />
         </div>
         <div id="b3" class="testing">
             <h2>Information Technology Prospects</h2>
             <p>Get your high tech people here! </p>
-            <asp:Button ID="itButton3" runat="server" Text="Click here!"  CssClass="btn btn-info ib3" OnClick="itButton3_Click" />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <img src="Resources/js.png" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="Resources/a.png" width="200px" height="160px" /><br />
+            <asp:Button ID="itButton3" runat="server" Text="Click here!"  CssClass="btn btn-warning " OnClick="itButton3_Click" Height="55px" Width="150px" />
         </div>
         <div id="b4" class="testing">
             <h2>Digital Media Prospects</h2>
-            <p>Spend no time to find prospects who have limitless creativity in the digital media field! </p>
-            <asp:Button ID="dmButton4" runat="server" Text="Click here!"  CssClass="btn btn-info dmb4" OnClick="dmButton4_Click" />
+            <p>Spend no time finding creative prospects in the digital media field! </p>&nbsp;&nbsp;&nbsp;&nbsp;
+            <img src="Resources/ps.png" width="200px" height="160px" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             <img src="Resources/pr.png" width="200px" height="160px"  /><br />
+            <asp:Button ID="dmButton4" runat="server" Text="Click here!"  CssClass="btn btn-warning" OnClick="dmButton4_Click" Height="55px" Width="150px" />
         </div>
     </section>
 

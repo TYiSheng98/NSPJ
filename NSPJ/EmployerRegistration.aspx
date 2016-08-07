@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EmployerRegistration.aspx.cs" Inherits="NSPJ.EmployerRegistration" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <%--<asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex="0">
-        <asp:View ID="View1" runat="server">--%>
+    <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex="0">
+        <asp:View ID="View1" runat="server">
             <section class="form-horizontal">
                 <fieldset>
                     <legend>Company Profile</legend>
@@ -22,19 +22,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="RadioButtonList1" class="col-lg-2 control-label">Company Size</label>
-                        <div class="col-lg-10 ">
-                            <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal">
-
-                                <asp:ListItem Text="Small" Value="Small" />
-                                <asp:ListItem Text="Medium" Value="Medium" />
-                                <asp:ListItem Text="Large" Value="Large" />
-
-                            </asp:RadioButtonList>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="RadioButtonList2" class="col-lg-2 control-label">Company Location</label>
+                        <label for="RadioButtonList2" class="col-lg-2 control-label">Company Region</label>
                         <div class="col-lg-10">
 
                            
@@ -48,13 +36,26 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label for="RadioButtonList1" class="col-lg-2 control-label">Company Size</label>
+                        <div class="col-lg-10 ">
+                            <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal">
+
+                                <asp:ListItem Text="Small" Value="Small" />
+                                <asp:ListItem Text="Medium" Value="Medium" />
+                                <asp:ListItem Text="Large" Value="Large" />
+
+                            </asp:RadioButtonList>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
                         <label for="PhoneNo" class="col-lg-2 control-label">Company Phone Number</label>
                         <div class="col-lg-10">
                             <asp:TextBox ID="PhoneNo" runat="server" TextMode="Phone" CssClass="form-control"></asp:TextBox>
-                            <asp:RegularExpressionValidator ID="RegularExpressionValidator2"
+                            <%--<asp:RegularExpressionValidator ID="RegularExpressionValidator2"
                                 runat="server" ErrorMessage="Enter valid Phone number"
                                 ControlToValidate="PhoneNo"
-                                ValidationExpression="[0-9]{8}"></asp:RegularExpressionValidator>
+                                ValidationExpression="[0-9]{8}"></asp:RegularExpressionValidator>--%>
                         </div>
                     </div>
                     <div class="form-group">
@@ -66,8 +67,8 @@
                     </div>
                 </fieldset>
             </section>
-       <%-- </asp:View>
-        <asp:View ID="View2" runat="server">--%>
+        </asp:View>
+        <asp:View ID="View2" runat="server">
             <section class="form-horizontal">
                 <fieldset>
                     <legend>Employer Profile</legend>
@@ -95,10 +96,10 @@
                         <label for="EPhoneNo" class="col-lg-2 control-label">Employer Phone Number</label>
                         <div class="col-lg-10">
                             <asp:TextBox ID="EPhoneNo" runat="server" TextMode="Phone" CssClass="form-control" ></asp:TextBox>
-                           <asp:RegularExpressionValidator ID="RegularExpressionValidator1"
+                          <%-- <asp:RegularExpressionValidator ID="RegularExpressionValidator1"
                                 runat="server" ErrorMessage="Enter valid Phone number"
                                 ControlToValidate="EPhoneNo"
-                                ValidationExpression="[0-9]{8}"></asp:RegularExpressionValidator>
+                                ValidationExpression="[0-9]{8}"></asp:RegularExpressionValidator>--%>
                         </div>
                     </div>
                     <div class="form-group">
@@ -122,9 +123,9 @@
                      <div class="form-group">
                         <label for="CompanyList" class="col-lg-2 control-label">Employer's Company</label>
                         <div class="col-lg-10">
-                            <asp:DropDownList ID="CompanyList" runat="server" DataSourceID="SqlDataSource1" DataTextField="CompanyName" DataValueField="CompanyName" ></asp:DropDownList>
+                            <asp:DropDownList ID="CompanyList" runat="server" CssClass="form-control" Width="20%"></asp:DropDownList>
                            
-                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:nspjConnectionString %>" SelectCommand="SELECT [CompanyName] FROM [Company]"></asp:SqlDataSource>
+                            
                            
                         </div>
                     </div>
@@ -134,12 +135,15 @@
                             <asp:TextBox ID="Designation" runat="server"  CssClass="form-control"></asp:TextBox>
                         </div>
                     </div>
-                    <%--<div class="form-group">
-                        <label for="Designation" class="col-lg-2 control-label">picture</label>
+
+                   <div class="form-group">
+                        <label for="Designation" class="col-lg-2 control-label">Photo</label>
                         <div class="col-lg-10">
                             <asp:FileUpload ID="FileUpload1" runat="server" />
                         </div>
-                    </div>--%>
+                    </div>
+
+                    
                     
                     <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-2">
@@ -150,11 +154,11 @@
                     </div>
                 </fieldset>
             </section>
-        <%--</asp:View>
-    </asp:MultiView>--%>
-    <%--<asp:Button ID="Prev" runat="server" Text="Prev" OnClick="Prev_Click" />
+        </asp:View>
+    </asp:MultiView>
+    <asp:Button ID="Prev" runat="server" Text="Prev" OnClick="Prev_Click" />
 
-    <asp:Button ID="Next" runat="server" Text="Next" OnClick="Next_Click" />--%>
+    <asp:Button ID="Next" runat="server" Text="Next" OnClick="Next_Click" />
 
     
     
