@@ -71,6 +71,46 @@ SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
         protected void History3_Click(object sender, EventArgs e)
         {
             MultiView1.ActiveViewIndex = 2;
+            String q = (String)(Session["historyList"]);
+            String[] blist = q.Split('~');
+           
+            int abc = blist.Length;
+            ArrayList List1 = new ArrayList();
+            ArrayList List2 = new ArrayList();
+
+
+            String query = "";
+            using (SqlConnection connection = new
+SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
+"nspjConnectionString"].ConnectionString))
+            {
+                connection.Open();
+                for (int a = 0; a < abc; a++)
+                {
+                    query = " SELECT [Industry],[Skill] FROM[nspj].[dbo].[User] where Name = @a ";
+
+                    SqlCommand cmd = new SqlCommand(query, connection);
+
+                    cmd.Parameters.AddWithValue("@a", blist[a]);
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr.HasRows)
+                        {
+                            while (dr.Read())
+                            {
+
+                                List1.Add(dr["Industry"].ToString());
+                                List2.Add(dr["Skill"].ToString());
+                            }
+                        }
+
+                    }
+                }
+                connection.Close();
+            }
+            Session["iList"] = ArrayListToString(ref List1);
+            Session["sList"] = ArrayListToString(ref List2);
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "myFunction", "add()", true);
         }
         private string ArrayListToString(ref ArrayList _ArrayList)
         {

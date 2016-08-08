@@ -20,8 +20,8 @@ namespace NSPJ
             ArrayList NList = new ArrayList();
             ArrayList IList = new ArrayList();
             ArrayList SList = new ArrayList();
-            
-            var a = AES.Decrypt(Request.QueryString["query"], (string)Session["ID"]);
+
+            var a = Request.QueryString["query"];
             var c = Request.QueryString["cat"];
             int k = Convert.ToInt32(c);
             String query = "";
@@ -82,11 +82,41 @@ SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
 
             if (IsPostBack)
             {
-                string q = Request["__EVENTTARGET"];
-                if (q == "lol")
+                
+                string q = Request["__EVENTTARGET"];//contrl
+                if (q == "lala")
                 {
                     string parameter = Request["__EVENTARGUMENT"]; // parameter
-                    MsgBox( parameter);
+                    //MsgBox(parameter + " has been added to Bookmarks!");
+
+
+                    using (SqlConnection connection123 = new
+SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
+"nspjConnectionString"].ConnectionString))
+                    {
+                        connection123.Open();
+                        SqlCommand command = new SqlCommand();
+                        //cmd.CommandText = "INSERT INTO [nspj].[dbo].[Company] (CompanyName,CompanyAddress,CompanySize,CompanyLocation,CompanyNo)  VALUES ('" + Cname.Text + "','" + address.Text + "','" + RadioButtonList1.SelectedValue + "','" + RadioButtonList2.SelectedValue + "','" + PhoneNo.Text + "');";
+                        command.CommandText = "INSERT INTO [nspj].[dbo].[History] (EmployerID,HistoryPeople)  VALUES (@0,@1);";
+                        command.Parameters.Add(new SqlParameter("@0", Session["ID"].ToString()));
+                        command.Parameters.Add(new SqlParameter("@1", parameter));
+
+                        command.Connection = connection123;
+
+                        command.ExecuteNonQuery();
+                        connection123.Close();
+                    }
+                    ArrayList UpdateHList = new ArrayList();
+                    UpdateHList = lol();
+                    Session["historyList"] = ArrayListToString(ref UpdateHList);
+                    Response.Redirect("UserProfile.aspx?name="+parameter);
+
+                }
+
+               else if (q == "lol" )
+                {
+                    string parameter = Request["__EVENTARGUMENT"]; // parameter
+                    MsgBox( parameter + " has been added to Bookmarks!");
 
 
                     using (SqlConnection connection123 = new
@@ -110,9 +140,39 @@ SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
                     Session["BookmarkList"] = ArrayListToString(ref UpdateList);
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "myFunction", "addAnother()", true);
                 }
+                 
             }
         } //endpage load
+        private ArrayList lol()
+        {
+            ArrayList hlist = new ArrayList();
+            using (SqlConnection con = new
+       SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
+       "nspjConnectionString"].ConnectionString))
+            {
+                con.Open();
+                String bquery = "SELECT HistoryPeople FROM [nspj].[dbo].[History] where EmployerID = @a order by RowID desc";
+                SqlCommand cmd1 = new SqlCommand(bquery, con);
+                cmd1.Parameters.AddWithValue("@a", (String)Session["ID"]);
+                using (SqlDataReader dr = cmd1.ExecuteReader())
+                {
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
 
+                            hlist.Add(dr["HistoryPeople"].ToString());
+                        }
+                    }
+
+                }
+
+
+
+                con.Close();
+            }
+            return hlist;
+        }
         private ArrayList qwerty()
         {
             ArrayList Bookmarklist = new ArrayList();

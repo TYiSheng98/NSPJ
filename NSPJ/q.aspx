@@ -43,7 +43,9 @@
     <script type="text/javascript">
         //get bookmarked string
             var ch = '<%=  Session["BookmarkList"] %>';
-            var gg = ch.split('~');
+        var gg = ch.split('~');
+        var h= '<%=  Session["historyList"] %>';
+        var hh = h.split('~');
             
         function addAnother() {
             
@@ -70,6 +72,7 @@
             // Now you have an array in javascript of each value
 
             for (var counter = 0; counter < total ; counter++) {
+               
                 var name = listArray[counter];
                 var industry = listArray1[counter];
                 var skill = listArray2[counter];
@@ -103,8 +106,10 @@
                 var linebreak= document.createElement("br");
                 div.appendChild(linebreak);
                 var c = document.createElement("a");
-                c.setAttribute('href', "UserProfile.aspx");
-
+                //c.setAttribute('href', "UserProfile.aspx");
+                c.setAttribute("id", name);
+                c.style.cursor = "pointer";
+                c.onclick = function () { go(this.id); }
                 var h1 = document.createElement("h1"); // Create a <h1> element
                 //h.setAttribute("class", "lol h5");
                 var t = document.createTextNode(name);     // Create a text node
@@ -120,6 +125,13 @@
 
                 ul.appendChild(li);
             }
+        }
+        function go(id) {
+           
+            h += "~" + id;
+            //alert(id + "!1111");
+            __doPostBack('lala', id);
+
         }
         function save(id) {
             var buttonclicked = document.getElementById(id);

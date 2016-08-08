@@ -60,6 +60,12 @@ namespace NSPJ
                         BList = qwerty();
                         Session["bookmarkcounter"] = BList.Count;
                         Session["BookmarkList"] = ArrayListToString(ref BList);
+                        
+                        ArrayList HList = new ArrayList();
+                        HList = lol();
+                        Session["historycounter"] = HList.Count;
+                        Session["historyList"] = ArrayListToString(ref HList);
+
                         Response.Redirect("Default.aspx");
                     }
                     else
@@ -104,6 +110,36 @@ namespace NSPJ
                 con.Close();
             }
             return Bookmarklist;
+        }
+        private ArrayList lol()
+        {
+            ArrayList hlist = new ArrayList();
+            using (SqlConnection con = new
+       SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
+       "nspjConnectionString"].ConnectionString))
+            {
+                con.Open();
+                String bquery = "SELECT [HistoryPeople] FROM[nspj].[dbo].[History] where EmployerID = @a order by RowID ";
+                SqlCommand cmd1 = new SqlCommand(bquery, con);
+                cmd1.Parameters.AddWithValue("@a", (String)Session["ID"]);
+                using (SqlDataReader dr = cmd1.ExecuteReader())
+                {
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+
+                            hlist.Add(dr["HistoryPeople"].ToString());
+                        }
+                    }
+
+                }
+
+
+
+                con.Close();
+            }
+            return hlist;
         }
         private string ArrayListToString(ref ArrayList _ArrayList)
         {

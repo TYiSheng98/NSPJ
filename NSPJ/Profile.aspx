@@ -19,7 +19,7 @@
     <section>
     <h2>Profile Picture</h2>
         <br />
-        <img src="Resources/windows.png" />
+        <asp:Image ID="Image1" Visible = "false" runat="server" />
         </section>
     <section>
     <h2>Account Security</h2>
