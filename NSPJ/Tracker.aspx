@@ -20,7 +20,12 @@
             #list1 li {
                 margin: 2% 0;
             }
-
+             .image{
+                float:left;
+                position:absolute;
+                top:16%;
+                left:8%;
+            }
         .Button2 {
             position: absolute;
             float: right;
@@ -125,6 +130,10 @@
                 li.setAttribute("id", "element" + counter);
                 var div = document.createElement("div");
                 div.setAttribute("class", "a");
+                var x = document.createElement("IMG");
+                x.setAttribute("src", "../Resources/acc.png");
+                x.setAttribute("alt", "Account picture");
+                div.appendChild(x);
                 var btn = document.createElement("INPUT");
                 btn.setAttribute("id", name);
                 btn.setAttribute("type", "button");
@@ -140,7 +149,7 @@
                 div.appendChild(linebreak);
                 var c = document.createElement("a");
                 c.style.cursor = "pointer";
-                //c.setAttribute('href', "UserProfile.aspx");
+                c.onclick = function () { go(this.id); }
                 var h1 = document.createElement("h1"); // Create a <h1> element
                 //h.setAttribute("class", "lol h5");
                 var t = document.createTextNode(name);     // Create a text node
@@ -231,6 +240,10 @@
                 li.setAttribute("id", "element" + counter);
                 var div = document.createElement("div");
                 div.setAttribute("class", "a");
+                var x = document.createElement("IMG");
+                x.setAttribute("src", "../Resources/acc.png");
+                x.setAttribute("alt", "Account picture");
+                div.appendChild(x);
                 var btn = document.createElement("INPUT");
                 btn.setAttribute("id", name);
                 btn.setAttribute("type", "button");
@@ -246,7 +259,7 @@
                 div.appendChild(linebreak);
                 var c = document.createElement("a");
                 c.style.cursor = "pointer";
-                //c.setAttribute('href', "UserProfile.aspx");
+                c.onclick = function () { go(this.id); }
                 var h1 = document.createElement("h1"); // Create a <h1> element
                 //h.setAttribute("class", "lol h5");
                 var t = document.createTextNode(name);     // Create a text node

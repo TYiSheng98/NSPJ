@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server" onload="javascript:addAnother();">
     <style>
         #ResultCounter{
-            margin: 0 auto;
+            text-align:center;
 
         }
         #list {
@@ -38,6 +38,12 @@
             .a h5 {
                 clear: both;
                 text-align: center;
+            }
+            .image{
+                float:left;
+                position:absolute;
+                top:16%;
+                left:8%;
             }
     </style>
     <script type="text/javascript">
@@ -83,6 +89,11 @@
                 li.setAttribute("id", "element" + counter);
                 var div = document.createElement("div");
                 div.setAttribute("class", "a");
+                var x = document.createElement("IMG");
+                x.setAttribute("src", "../Resources/acc.png");
+                x.setAttribute("alt", "Account picture");
+                x.setAttribute("class", "image");
+                div.appendChild(x);
                 var btn = document.createElement("INPUT");
                 btn.setAttribute("id", name);
                 btn.setAttribute("type", "button");

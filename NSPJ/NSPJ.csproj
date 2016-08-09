@@ -182,6 +182,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Account\Web.config" />
     <Content Include="Resources\a.png" />
+    <Content Include="Resources\acc.png" />
     <Content Include="Resources\c.png" />
     <Content Include="Resources\js.png" />
     <Content Include="Resources\m.png" />
@@ -424,7 +425,6 @@
     <Compile Include="q.aspx.designer.cs">
       <DependentUpon>q.aspx</DependentUpon>
     </Compile>
-    <Compile Include="result.cs" />
     <Compile Include="Search.aspx.cs">
       <DependentUpon>Search.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
