@@ -1,13 +1,21 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="WebForm5.aspx.cs" Inherits="NSPJ.WebForm5" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="WebForm5.aspx.cs" Inherits="NSPJ.WebForm5" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-   
-    
-        <!-- Trigger the modal with a button -->
+    <div>
+        <asp:FileUpload ID="FileUpload1" runat="server" />
+        <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
+        &nbsp;&nbsp;&nbsp;
+    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+    </div>
+    <%--<div>
+        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+        <img  />
+    </div>--%>
+   <%-- <!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
 
-<asp:Button runat="server" class="btn btn-info btn-lg" onclick="confirm_Click" Text="OPen Modal" />
 <!-- Modal -->
-<div id="myModal" class="modal" role="dialog">
+<div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -17,18 +25,14 @@
         <h4 class="modal-title">Modal Header</h4>
       </div>
       <div class="modal-body">
-        <%--<p>Some text in the modal.</p>--%>
-          <asp:PlaceHolder ID="PlaceHolder1" runat="server"></asp:PlaceHolder>
+        <p>Some text in the modal.</p>
       </div>
       <div class="modal-footer">
-          <asp:Button runat="server" type="button" class="btn btn-default" Text="Save" OnClick="va" />
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
 
   </div>
-</div>
-  
-  
+</div>--%>
 
 </asp:Content>

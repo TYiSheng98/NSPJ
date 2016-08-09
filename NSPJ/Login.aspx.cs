@@ -73,7 +73,7 @@ namespace NSPJ
                 }
             }catch (Exception ex)
             {
-                MsgBox("Login Failed! ID or password is invalid");
+                MsgBox("Login Failed!");
             }
 
 

@@ -22,14 +22,14 @@
     float: left;
     width: 50%;
     padding: 1%;
-
+        font-style: italic;
     font-size: 15px;
     text-align:center;
         }
         /*.testing h2{text-align:center;    font-weight: bold;}
         .testing p {text-align:center; }*/
         #b1 {
-            background-color: #FFCE33;
+            background-color: #40ff00;
         }
 
         #b2 {
@@ -62,7 +62,7 @@
         }
     </style>
     <div class="alert alert-dismissible alert-info">
-    <asp:Label ID="Label1" runat="server" Text="Label" Font-Size="Large"></asp:Label>
+    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
     </div>
     <div class="jumbotron">
         <div id="logoM">
@@ -71,13 +71,13 @@
             <h1 id ="header">Find the talents you need here!</h1>
         </div>
         <p class="qwer">
-            <asp:DropDownList ID="SearchList" runat="server"  CssClass="form-control" Width="20%" Font-Size="Large">
+            <asp:DropDownList ID="SearchList" runat="server"  CssClass="form-control" Width="20%">
                 <asp:ListItem Text="All" Value="1"></asp:ListItem>
                 <asp:ListItem Text="Industry" Value="2"></asp:ListItem>
                 <asp:ListItem Text="Skill" Value="3"></asp:ListItem>
             </asp:DropDownList>
-            <asp:TextBox ID="querystring" runat="server" placeholder="Search" CssClass="form-control" Font-Size="Large"></asp:TextBox>
-            <asp:Button ID="SearchButton" runat="server" Text="Search" CssClass="btn btn-info" Font-Italic="true" OnClick="SearchButton_Click1"  Font-Size="Medium"/>
+            <asp:TextBox ID="querystring" runat="server" placeholder="Search la!" CssClass="form-control"></asp:TextBox>
+            <asp:Button ID="SearchButton" runat="server" Text="Search" CssClass="btn btn-info" OnClick="SearchButton_Click1" />
         </p>
     </div>
     <section id="123">
@@ -86,28 +86,28 @@
             <p>Find passionate candidates who want to make an positive impact on others lives!</p>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <img src="Resources/m.png" width="200px" height="160px" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="Resources/m1.png"  width="200px" height="160px"/><br />
-            <asp:Button ID="mButton1" runat="server" Text="Click here!"  CssClass="btn btn-warning " Font-Size="Large" OnClick="mButton1_Click" Height="55px" Width="150px" />
+            <asp:Button ID="mButton1" runat="server" Text="Click here!"  CssClass="btn btn-warning " OnClick="mButton1_Click" Height="55px" Width="150px" />
         </div>
         <div id="b2" class="testing">
             <h2>Business Management Prospects</h2>
             <p>Find your potential business guru here!</p>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <img src="Resources/c.png" width="200px" height="160px" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="Resources/money.png" width="200px" height="160px" /><br />
-            <asp:Button ID="bButton2" runat="server" Text="Click here!"  CssClass="btn btn-warning " Font-Size="Large" OnClick="bButton2_Click" Height="55px" Width="150px" />
+            <asp:Button ID="bButton2" runat="server" Text="Click here!"  CssClass="btn btn-warning " OnClick="bButton2_Click" Height="55px" Width="150px" />
         </div>
         <div id="b3" class="testing">
             <h2>Information Technology Prospects</h2>
             <p>Get your high tech people here! </p>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <img src="Resources/js.png" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="Resources/a.png" width="200px" height="160px" /><br />
-            <asp:Button ID="itButton3" runat="server" Text="Click here!"  CssClass="btn btn-warning " Font-Size="Large" OnClick="itButton3_Click" Height="55px" Width="150px" />
+            <asp:Button ID="itButton3" runat="server" Text="Click here!"  CssClass="btn btn-warning " OnClick="itButton3_Click" Height="55px" Width="150px" />
         </div>
         <div id="b4" class="testing">
             <h2>Digital Media Prospects</h2>
             <p>Spend no time finding creative prospects in the digital media field! </p>&nbsp;&nbsp;&nbsp;&nbsp;
             <img src="Resources/ps.png" width="200px" height="160px" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
              <img src="Resources/pr.png" width="200px" height="160px"  /><br />
-            <asp:Button ID="dmButton4" runat="server" Text="Click here!"  CssClass="btn btn-warning" Font-Size="Large" OnClick="dmButton4_Click" Height="55px" Width="150px" />
+            <asp:Button ID="dmButton4" runat="server" Text="Click here!"  CssClass="btn btn-warning" OnClick="dmButton4_Click" Height="55px" Width="150px" />
         </div>
     </section>
 

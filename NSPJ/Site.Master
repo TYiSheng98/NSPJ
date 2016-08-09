@@ -51,10 +51,10 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Home</a></li>
-                        
+                        <%--<li><a runat="server" href="~/q">Search</a></li>--%>
                         <li><a runat="server" href="~/Tracker">Tracker</a></li>
-
-                        
+                        <li><a runat="server" href="#">Schedule</a></li>
+                        <li><a runat="server" href="#">Notifications</a></li>
                         <li><a runat="server" href="~/Profile">Profile</a></li>
                         <li><a runat="server" href="~/EmployerRegistration">Employer Register</a></li>
                     </ul>
@@ -82,7 +82,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - DatsMe Application</p>
+                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
             </footer>
         </div>
     </form>
