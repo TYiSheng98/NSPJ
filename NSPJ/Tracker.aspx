@@ -125,6 +125,10 @@
                 li.setAttribute("id", "element" + counter);
                 var div = document.createElement("div");
                 div.setAttribute("class", "a");
+                var x = document.createElement("IMG");
+                x.setAttribute("src", "../Resources/acc.png");
+                x.setAttribute("class", "pic");
+                x.setAttribute("alt", "picture");
                 var btn = document.createElement("INPUT");
                 btn.setAttribute("id", name);
                 btn.setAttribute("type", "button");
@@ -140,6 +144,7 @@
                 div.appendChild(linebreak);
                 var c = document.createElement("a");
                 c.style.cursor = "pointer";
+                c.onclick = function () { go(this.id); }
                 //c.setAttribute('href', "UserProfile.aspx");
                 var h1 = document.createElement("h1"); // Create a <h1> element
                 //h.setAttribute("class", "lol h5");
@@ -231,6 +236,10 @@
                 li.setAttribute("id", "element" + counter);
                 var div = document.createElement("div");
                 div.setAttribute("class", "a");
+                var x = document.createElement("IMG");
+                x.setAttribute("src", "../Resources/acc.png");
+                x.setAttribute("class", "pic");
+                x.setAttribute("alt", "picture");
                 var btn = document.createElement("INPUT");
                 btn.setAttribute("id", name);
                 btn.setAttribute("type", "button");
@@ -246,6 +255,7 @@
                 div.appendChild(linebreak);
                 var c = document.createElement("a");
                 c.style.cursor = "pointer";
+                c.onclick = function () { go(this.id); }
                 //c.setAttribute('href', "UserProfile.aspx");
                 var h1 = document.createElement("h1"); // Create a <h1> element
                 //h.setAttribute("class", "lol h5");

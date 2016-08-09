@@ -20,6 +20,12 @@
             top: 5%;
             right: 2%;
         }
+         .pic {
+            position: absolute;
+            float: left;
+            top: 16%;
+            left: 8%;
+        }
 
         .a {
             margin: 0 auto;
@@ -83,6 +89,11 @@
                 li.setAttribute("id", "element" + counter);
                 var div = document.createElement("div");
                 div.setAttribute("class", "a");
+                var x = document.createElement("IMG");
+                x.setAttribute("src", "../Resources/acc.png");
+                x.setAttribute("class", "pic");
+                x.setAttribute("alt", "picture");
+                div.appendChild(x);
                 var btn = document.createElement("INPUT");
                 btn.setAttribute("id", name);
                 btn.setAttribute("type", "button");
@@ -103,7 +114,9 @@
                 //btn.appendChild(t);
                 btn.onclick = function () { save(this.id) };
                 div.appendChild(btn);
-                var linebreak= document.createElement("br");
+                var linebreak = document.createElement("br");
+               
+                
                 div.appendChild(linebreak);
                 var c = document.createElement("a");
                 //c.setAttribute('href', "UserProfile.aspx");
@@ -145,7 +158,7 @@
             alert(document.getElementById('<%= HiddenField1.ClientID%>').value);--%>
         };
     </script>
-    <h1 id ="ResultCounter">0 Results Found!</h1>
+    <h1 id ="ResultCounter" style="text-align:center;">0 Results Found!</h1>
     <ul id="list" class="list-group">
         <%--<asp:HiddenField ID="HiddenField1" runat="server" />--%>
     </ul>

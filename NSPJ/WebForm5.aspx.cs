@@ -14,78 +14,36 @@ namespace NSPJ
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+           
         }
-        private Boolean InsertUpdateData(SqlCommand cmd)
+
+        protected void confirm_Click(object sender, EventArgs e)
         {
-            String strConnString = System.Configuration.ConfigurationManager
-            .ConnectionStrings["nspjConnectionString"].ConnectionString;
-            SqlConnection con = new SqlConnection(strConnString);
-            cmd.CommandType = CommandType.Text;
-            cmd.Connection = con;
-            try
-            {
-                con.Open();
-                cmd.ExecuteNonQuery();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Response.Write(ex.Message);
-                return false;
-            }
-            finally
-            {
-                con.Close();
-                con.Dispose();
-            }
+            Panel p = new Panel();
+            Label header = new Label();
+            header.Text = "Please enter Your current password below !";
+            p.Controls.Add(header);
+            System.Web.UI.HtmlControls.HtmlGenericControl linebreak = new System.Web.UI.HtmlControls.HtmlGenericControl("DIV");
+            linebreak.ID = "createDiv";
+            p.Controls.Add(linebreak);
+            Label l = new Label();
+            l.Text = "Password:";
+            p.Controls.Add(l);
+            TextBox txt = new TextBox();
+            txt.ID = "textBox1";
+            p.Controls.Add(txt);
+            
+            PlaceHolder1.Controls.Add(p);
+            ScriptManager.RegisterStartupScript(Page,Page.GetType(), "myModal", "$('#myModal').modal();",true);
         }
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void va(object sender, EventArgs e)
         {
-            // Read the file and convert it to Byte Array
-            string filePath = FileUpload1.PostedFile.FileName;
-            string filename = Path.GetFileName(filePath);
-            string ext = Path.GetExtension(filename);
-            string contenttype = String.Empty;
-
-            //Set the contenttype based on File Extension
-            switch (ext)
-            {
-               
-                case ".jpg":
-                    contenttype = "Resources/jpg";
-                    break;
-                case ".png":
-                    contenttype = "Resources/png";
-                    break;
-                case ".gif":
-                    contenttype = "Resources/gif";
-                    break;
-                
-            }
-            if (contenttype != String.Empty)
-            {
-
-                Stream fs = FileUpload1.PostedFile.InputStream;
-                BinaryReader br = new BinaryReader(fs);
-                Byte[] bytes = br.ReadBytes((Int32)fs.Length);
-
-                //insert the file into database
-                string strQuery = "insert into [imagetest](Image)" +
-                   " values (@data)";
-                SqlCommand cmd = new SqlCommand(strQuery);
-                
-                cmd.Parameters.Add("@Data", SqlDbType.Binary).Value = bytes;
-                InsertUpdateData(cmd);
-                Label1.ForeColor = System.Drawing.Color.Green;
-                Label1.Text = "File Uploaded Successfully";
-            }
-            else
-            {
-                Label1.ForeColor = System.Drawing.Color.Red;
-                Label1.Text = "File format not recognised." +
-                  " Upload Image/Word/PDF/Excel formats";
-            }
+            MsgBox("tttt");
         }
+        public void MsgBox(String msg)
+        {
+            Page.ClientScript.RegisterStartupScript(Page.GetType(), "Message Box", "<script language='javascript'>alert('" + msg + "')</script>");
+        }
+
     }
 }

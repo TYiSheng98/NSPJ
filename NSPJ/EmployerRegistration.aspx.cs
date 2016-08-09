@@ -12,7 +12,7 @@ namespace NSPJ
 {
     public partial class EmployerRegistration : System.Web.UI.Page
     {
-        int counter = 0;
+        //int counter = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
 
