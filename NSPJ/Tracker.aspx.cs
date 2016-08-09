@@ -13,7 +13,47 @@ namespace NSPJ
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (IsPostBack)
+            {
 
+                string q = Request["__EVENTTARGET"];//contrl
+                if (q == "lala")
+                {
+                    string parameter = Request["__EVENTARGUMENT"]; // parameter
+                    
+                    Response.Redirect("UserProfile.aspx?name=" + parameter);
+
+                }
+
+                else if (q == "lol")
+                {
+                    string parameter = Request["__EVENTARGUMENT"]; // parameter
+                    MsgBox(parameter + " has been added to Bookmarks!");
+
+
+                    using (SqlConnection connection123 = new
+SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
+"nspjConnectionString"].ConnectionString))
+                    {
+                        connection123.Open();
+                        SqlCommand command = new SqlCommand();
+                        //cmd.CommandText = "INSERT INTO [nspj].[dbo].[Company] (CompanyName,CompanyAddress,CompanySize,CompanyLocation,CompanyNo)  VALUES ('" + Cname.Text + "','" + address.Text + "','" + RadioButtonList1.SelectedValue + "','" + RadioButtonList2.SelectedValue + "','" + PhoneNo.Text + "');";
+                        command.CommandText = "INSERT INTO [nspj].[dbo].[Bookmark] (EmployerID,MarkedPeople)  VALUES (@0,@1);";
+                        command.Parameters.Add(new SqlParameter("@0", Session["ID"].ToString()));
+                        command.Parameters.Add(new SqlParameter("@1", parameter));
+
+                        command.Connection = connection123;
+
+                        command.ExecuteNonQuery();
+                        connection123.Close();
+                    }
+                    ArrayList UpdateList = new ArrayList();
+                    UpdateList = qwerty();
+                    Session["BookmarkList"] = ArrayListToString(ref UpdateList);
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "myFunction", "addAnother()", true);
+                }
+
+            }
 
         }
 
@@ -129,6 +169,41 @@ SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
 
             return strFinal;
 
+        }
+        public void MsgBox(String msg)
+        {
+            Page.ClientScript.RegisterStartupScript(Page.GetType(), "Message Box", "<script language='javascript'>alert('" + msg + "')</script>");
+        }
+        private ArrayList qwerty()
+        {
+            ArrayList Bookmarklist = new ArrayList();
+            using (SqlConnection con = new
+       SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
+       "nspjConnectionString"].ConnectionString))
+            {
+                con.Open();
+                String bquery = "SELECT MarkedPeople FROM[nspj].[dbo].[Bookmark] where EmployerID = @a order by [MarkedPeople]";
+                SqlCommand cmd1 = new SqlCommand(bquery, con);
+                cmd1.Parameters.AddWithValue("@a", (String)Session["ID"]);
+                using (SqlDataReader dr = cmd1.ExecuteReader())
+                {
+
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+
+                            Bookmarklist.Add(dr["MarkedPeople"].ToString());
+                        }
+                    }
+
+                }
+
+
+
+                con.Close();
+            }
+            return Bookmarklist;
         }
 
     }       

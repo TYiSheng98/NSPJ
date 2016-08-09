@@ -32,7 +32,7 @@
           <asp:Label ID="Label7" runat="server" Text="Please enter your current password below!"></asp:Label>
           <br />
           <asp:Label ID="Label8" runat="server" Text="Current Password: "></asp:Label>
-          <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control"></asp:TextBox>
+          <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
       </div>
       <div class="modal-footer">
            <asp:Button ID="confirmp" runat="server"  Text="Continue" CssClass="btn btn-info" OnClick="confirm_Click" />
@@ -58,7 +58,7 @@
                     <h3>ID: </h3>
                     <asp:Label ID="Label1" runat="server" Text="Label" Font-Size="X-Large"></asp:Label>
                     <h3>Password: </h3>
-                    <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" Font-Size="X-Large" TextMode="Password"></asp:TextBox>
+                    <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" Font-Size="X-Large" ></asp:TextBox>
                 </section>
                 <section>
                     <h2>Account Information</h2>
@@ -135,8 +135,8 @@
                     
                     <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-2">
-                           <%-- <asp:Button ID="EClear" runat="server" Text="Clear" CssClass="btn btn-default" OnClick="EClear_Click"   />
-                            <asp:Button ID="ECreate" runat="server" Text="Create Employer" CssClass="btn btn-primary" OnClick="ECreate_Click" />--%>
+                            <asp:Button ID="EClear" runat="server" Text="Clear All" CssClass="btn btn-default" OnClick="EClear_Click"   />
+                            <asp:Button ID="ECreate" runat="server" Text="Update details" CssClass="btn btn-primary" OnClick="ECreate_Click" />
                             
                         </div>
                     </div>

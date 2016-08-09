@@ -54,6 +54,11 @@
                 clear: both;
                 text-align: center;
             }
+             .image{
+                float:left;
+                position:absolute;
+                top:16%;
+                left:8%;
     </style>
 
 
@@ -133,6 +138,7 @@
                 var x = document.createElement("IMG");
                 x.setAttribute("src", "../Resources/acc.png");
                 x.setAttribute("alt", "Account picture");
+                x.setAttribute("class", "image");
                 div.appendChild(x);
                 var btn = document.createElement("INPUT");
                 btn.setAttribute("id", name);
@@ -149,12 +155,14 @@
                 div.appendChild(linebreak);
                 var c = document.createElement("a");
                 c.style.cursor = "pointer";
+                
                 c.onclick = function () { go(this.id); }
                 var h1 = document.createElement("h1"); // Create a <h1> element
                 //h.setAttribute("class", "lol h5");
                 var t = document.createTextNode(name);     // Create a text node
                 h1.appendChild(t);                  // Append the text to <h1>
                 c.appendChild(h1);
+                c.setAttribute("id", name);
                 div.appendChild(c);
                 var h5 = document.createElement("h5"); // Create a <h5> element
                 //h5.setAttribute("class", "badge");
@@ -180,7 +188,7 @@
          function go(id) {
            
             h += "~" + id;
-            alert(id + "!1111");
+            alert(id);
             __doPostBack('lala', id);
 
         }
@@ -243,13 +251,24 @@
                 var x = document.createElement("IMG");
                 x.setAttribute("src", "../Resources/acc.png");
                 x.setAttribute("alt", "Account picture");
+                x.setAttribute("class", "image");
                 div.appendChild(x);
                 var btn = document.createElement("INPUT");
                 btn.setAttribute("id", name);
                 btn.setAttribute("type", "button");
                 btn.setAttribute("class", "btn btn-info Button2");
-                btn.setAttribute("value", "Added");
-                btn.disabled = true;
+                for (var counter1 = 0; counter1 < ch.length; counter1++) {
+                    var In = gg[counter1];
+
+                    if (In === name) {
+                        btn.setAttribute("value", "Added");
+                        btn.disabled = true;
+                        break;
+                    }
+
+                }
+                btn.setAttribute("value", "Add to BookMarks");
+                
                 
                 //var t = document.createTextNode("Add to bookmark");
                 //btn.appendChild(t);
@@ -258,13 +277,15 @@
                 var linebreak= document.createElement("br");
                 div.appendChild(linebreak);
                 var c = document.createElement("a");
+                c.setAttribute("id", name);
                 c.style.cursor = "pointer";
-                c.onclick = function () { go(this.id); }
+                
                 var h1 = document.createElement("h1"); // Create a <h1> element
                 //h.setAttribute("class", "lol h5");
                 var t = document.createTextNode(name);     // Create a text node
                 h1.appendChild(t);                  // Append the text to <h1>
                 c.appendChild(h1);
+                c.onclick = function () { go(this.id); }
                 div.appendChild(c);
                 var h5 = document.createElement("h5"); // Create a <h5> element
                 //h5.setAttribute("class", "badge");
