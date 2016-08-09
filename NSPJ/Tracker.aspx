@@ -90,7 +90,7 @@
     <asp:Button ID="Status1" runat="server" Text="Status" class="btn btn-info" OnClick="Status1_Click1" />
     <asp:Button ID="Bookmarks2" runat="server" Text="Bookmarks" class="btn btn-warning" OnClick="Bookmarks2_Click" />
     <asp:Button ID="History3" runat="server" Text="History" class="btn btn-danger" OnClick="History3_Click" />
-    <asp:MultiView ID="MultiView1" runat="server">
+    <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex="1">
         <asp:View ID="View1" runat="server">
             <h1>Status</h1>
         </asp:View>

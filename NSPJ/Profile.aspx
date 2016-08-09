@@ -14,6 +14,10 @@
             section h3 {
                 font-size: 30px;
             }
+            .alert{
+                font-size:1.5em;
+                font-weight:700;
+            }
         </style>
        <!-- Trigger the modal with a button -->
 <%--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>--%>
@@ -26,13 +30,13 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
+        <h4 class="modal-title ">Validation Process</h4>
       </div>
       <div class="modal-body">
-          <asp:Label ID="Label7" runat="server" Text="Please enter your current password below!"></asp:Label>
+          <asp:Label ID="Label7" runat="server" Font-Size="Large" Text="Please enter your current password below!"></asp:Label>
           <br />
-          <asp:Label ID="Label8" runat="server" Text="Current Password: "></asp:Label>
-          <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
+          <asp:Label ID="Label8" runat="server" Font-Size="Large" Text="Current Password: "></asp:Label>
+          <asp:TextBox ID="TextBox2" runat="server" Font-Size="Large" CssClass="form-control" TextMode="Password"></asp:TextBox>
       </div>
       <div class="modal-footer">
            <asp:Button ID="confirmp" runat="server"  Text="Continue" CssClass="btn btn-info" OnClick="confirm_Click" />

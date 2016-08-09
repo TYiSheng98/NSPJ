@@ -18,7 +18,7 @@
                         <label for="address" class="col-lg-2 control-label">Company Address</label>
                         <div class="col-lg-10">
                            
-                            <asp:TextBox ID="address" runat="server" CssClass="form-control" Rows="1" TextMode="MultiLine"></asp:TextBox>
+                            <asp:TextBox ID="address" runat="server" CssClass="form-control" Rows="2" Width="40%" TextMode="MultiLine"></asp:TextBox>
                         </div>
                     </div>
                     <div class="form-group">
@@ -156,9 +156,9 @@
             </section>
         </asp:View>
     </asp:MultiView>
-    <asp:Button ID="Prev" runat="server" Text="Prev" OnClick="Prev_Click" />
+    <asp:Button ID="Prev" runat="server" CssClass="btn btn-default" Text="Prev" OnClick="Prev_Click" />
 
-    <asp:Button ID="Next" runat="server" Text="Next" OnClick="Next_Click" />
+    <asp:Button ID="Next" runat="server" CssClass="btn btn-default" Text="Next" OnClick="Next_Click" />
 
     
     
