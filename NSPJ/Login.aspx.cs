@@ -55,6 +55,7 @@ namespace NSPJ
                     if (TextBox1.Text.Equals(ID) && TextBox2.Text.Equals(password))
                     {
                         Session["ID"] = ID;
+                        session.SName = (String)Session["ID"];
 
                         ArrayList BList = new ArrayList();
                         BList = qwerty();
@@ -91,7 +92,7 @@ namespace NSPJ
                 con.Open();
                 String bquery = "SELECT MarkedPeople FROM[nspj].[dbo].[Bookmark] where EmployerID = @a ";
                 SqlCommand cmd1 = new SqlCommand(bquery, con);
-                cmd1.Parameters.AddWithValue("@a", (String)Session["ID"]);
+                cmd1.Parameters.AddWithValue("@a", session.SName);
                 using (SqlDataReader dr = cmd1.ExecuteReader())
                 {
                     if (dr.HasRows)
@@ -121,7 +122,7 @@ namespace NSPJ
                 con.Open();
                 String bquery = "SELECT [HistoryPeople] FROM[nspj].[dbo].[History] where EmployerID = @a order by RowID ";
                 SqlCommand cmd1 = new SqlCommand(bquery, con);
-                cmd1.Parameters.AddWithValue("@a", (String)Session["ID"]);
+                cmd1.Parameters.AddWithValue("@a", session.SName);
                 using (SqlDataReader dr = cmd1.ExecuteReader())
                 {
                     if (dr.HasRows)

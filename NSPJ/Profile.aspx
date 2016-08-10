@@ -55,7 +55,7 @@
                 <section>
                     <h2>Profile Picture</h2>
                     <br />
-                    <asp:Image ID="Image1" Visible="false" runat="server" />
+                    <asp:Image ID="Image1" Visible="false" runat="server"  Width="100px" Height="100px"/>
                 </section>
                 <section>
                     <h2>Account Security</h2>

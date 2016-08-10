@@ -127,7 +127,7 @@ SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
                         SqlCommand command = new SqlCommand();
                         //cmd.CommandText = "INSERT INTO [nspj].[dbo].[Company] (CompanyName,CompanyAddress,CompanySize,CompanyLocation,CompanyNo)  VALUES ('" + Cname.Text + "','" + address.Text + "','" + RadioButtonList1.SelectedValue + "','" + RadioButtonList2.SelectedValue + "','" + PhoneNo.Text + "');";
                         command.CommandText = "INSERT INTO [nspj].[dbo].[Bookmark] (EmployerID,MarkedPeople)  VALUES (@0,@1);";
-                        command.Parameters.Add(new SqlParameter("@0", Session["ID"].ToString()));
+                        command.Parameters.Add(new SqlParameter("@0", session.SName));
                         command.Parameters.Add(new SqlParameter("@1", parameter));
 
                         command.Connection = connection123;
@@ -153,7 +153,7 @@ SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
                 con.Open();
                 String bquery = "SELECT HistoryPeople FROM [nspj].[dbo].[History] where EmployerID = @a order by RowID desc";
                 SqlCommand cmd1 = new SqlCommand(bquery, con);
-                cmd1.Parameters.AddWithValue("@a", (String)Session["ID"]);
+                cmd1.Parameters.AddWithValue("@a", session.SName);
                 using (SqlDataReader dr = cmd1.ExecuteReader())
                 {
                     if (dr.HasRows)
@@ -183,7 +183,7 @@ SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
                 con.Open();
                 String bquery = "SELECT MarkedPeople FROM[nspj].[dbo].[Bookmark] where EmployerID = @a order by [MarkedPeople]";
                 SqlCommand cmd1 = new SqlCommand(bquery, con);
-                cmd1.Parameters.AddWithValue("@a", (String)Session["ID"]);
+                cmd1.Parameters.AddWithValue("@a",session.SName);
                 using (SqlDataReader dr = cmd1.ExecuteReader())
                 {
                     

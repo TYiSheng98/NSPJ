@@ -13,11 +13,10 @@ namespace NSPJ
 {
     public partial class Profile : System.Web.UI.Page
     {
-        String A;
+        
         protected void Page_Load(object sender, EventArgs e)
         {
-            String ppp = (String)(Session)["ID"];
-            A = ppp;
+            
             if (!IsPostBack)
             {
                 String ID, password, name, gender, email, company, Designation;
@@ -33,7 +32,7 @@ namespace NSPJ
                     String query;
                     query = " SELECT [EmployerID],[Password],[EName],[Gender],[Email],[Ecompany],[Designation],[image] FROM[nspj].[dbo].[EMP] where EmployerID =@1 ";
                     SqlCommand cmd = new SqlCommand(query, connection);
-                    cmd.Parameters.AddWithValue("@1", ppp);
+                    cmd.Parameters.AddWithValue("@1", session.SName);
 
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
@@ -80,7 +79,7 @@ namespace NSPJ
                     String query;
                     query = " SELECT Password FROM[nspj].[dbo].[EMP] where EmployerID = @0";
                     SqlCommand cmd = new SqlCommand(query, connection123);
-                    cmd.Parameters.AddWithValue("@0", A);
+                    cmd.Parameters.AddWithValue("@0", session.SName);
 
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
@@ -219,7 +218,7 @@ namespace NSPJ
                                     cmd.Parameters.Add("@4", SqlDbType.Binary).Value = bytes;
 
                                 }
-                                cmd.Parameters.Add(new SqlParameter("@100", (String)(Session["ID"])));
+                                cmd.Parameters.Add(new SqlParameter("@100", session.SName) );
                                 cmd.Connection = connection;
                                 connection.Open();
                                 cmd.ExecuteNonQuery();

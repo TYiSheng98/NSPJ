@@ -54,11 +54,12 @@
                 clear: both;
                 text-align: center;
             }
-             .image{
-                float:left;
-                position:absolute;
-                top:16%;
-                left:8%;
+        .image {
+            float: left;
+            position: absolute;
+            top: 16%;
+            left: 8%;
+        }
     </style>
 
 
@@ -99,7 +100,9 @@
             <script type="text/javascript">
         //get bookmarked string
         var ch = '<%=  Session["BookmarkList"] %>';
-        var gg = ch.split('~');
+                var gg = ch.split('~');
+                var h= '<%=  Session["historyList"] %>';
+        var hh = h.split('~');
             
         function addAnother() {
             
@@ -188,7 +191,7 @@
          function go(id) {
            
             h += "~" + id;
-            alert(id);
+           
             __doPostBack('lala', id);
 
         }
@@ -212,7 +215,9 @@
             <script type="text/javascript">
         //get bookmarked string
         var ch = '<%=  Session["BookmarkList"] %>';
-        var gg = ch.split('~');
+                var gg = ch.split('~');
+                var h= '<%=  Session["historyList"] %>';
+        var hh = h.split('~');
             
         function add() {
             

@@ -16,8 +16,8 @@ namespace NSPJ
             if (IsPostBack)
             {
 
-                string q = Request["__EVENTTARGET"];//contrl
-                if (q == "lala")
+                string clicked = Request["__EVENTTARGET"];//contrl
+                if (clicked == "lala")
                 {
                     string parameter = Request["__EVENTARGUMENT"]; // parameter
                     
@@ -25,7 +25,7 @@ namespace NSPJ
 
                 }
 
-                else if (q == "lol")
+                else if (clicked == "lol")
                 {
                     string parameter = Request["__EVENTARGUMENT"]; // parameter
                     MsgBox(parameter + " has been added to Bookmarks!");
@@ -39,7 +39,7 @@ SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
                         SqlCommand command = new SqlCommand();
                         //cmd.CommandText = "INSERT INTO [nspj].[dbo].[Company] (CompanyName,CompanyAddress,CompanySize,CompanyLocation,CompanyNo)  VALUES ('" + Cname.Text + "','" + address.Text + "','" + RadioButtonList1.SelectedValue + "','" + RadioButtonList2.SelectedValue + "','" + PhoneNo.Text + "');";
                         command.CommandText = "INSERT INTO [nspj].[dbo].[Bookmark] (EmployerID,MarkedPeople)  VALUES (@0,@1);";
-                        command.Parameters.Add(new SqlParameter("@0", Session["ID"].ToString()));
+                        command.Parameters.Add(new SqlParameter("@0",session.SName));
                         command.Parameters.Add(new SqlParameter("@1", parameter));
 
                         command.Connection = connection123;
@@ -73,39 +73,42 @@ SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
             ArrayList List1 = new ArrayList();
             ArrayList List2 = new ArrayList();
 
-
-            String query = "";
-            using (SqlConnection connection = new
-SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
-"nspjConnectionString"].ConnectionString))
+            if (abc != 0)
             {
-                connection.Open();
-                for (int a = 0; a < abc; a++)
+                String query = "";
+                using (SqlConnection connection = new
+    SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
+    "nspjConnectionString"].ConnectionString))
                 {
-                    query = " SELECT [Industry],[Skill] FROM[nspj].[dbo].[User] where Name = @a ";
-
-                    SqlCommand cmd = new SqlCommand(query, connection);
-
-                    cmd.Parameters.AddWithValue("@a", blist[a]);
-                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    connection.Open();
+                    for (int a = 0; a < abc; a++)
                     {
-                        if (dr.HasRows)
+                        query = " SELECT [Industry],[Skill] FROM[nspj].[dbo].[User] where Name = @a ";
+
+                        SqlCommand cmd = new SqlCommand(query, connection);
+
+                        cmd.Parameters.AddWithValue("@a", blist[a]);
+                        using (SqlDataReader dr = cmd.ExecuteReader())
                         {
-                            while (dr.Read())
+                            if (dr.HasRows)
                             {
+                                while (dr.Read())
+                                {
 
-                                List1.Add(dr["Industry"].ToString());
-                                List2.Add(dr["Skill"].ToString());
+                                    List1.Add(dr["Industry"].ToString());
+                                    List2.Add(dr["Skill"].ToString());
+                                }
                             }
-                        }
 
+                        }
                     }
+                    connection.Close();
                 }
-                connection.Close();
+
+                Session["IList"] = ArrayListToString(ref List1);
+                Session["SList"] = ArrayListToString(ref List2);
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "myFunction", "addAnother()", true);
             }
-            Session["IList"] = ArrayListToString(ref List1);
-            Session["SList"] = ArrayListToString(ref List2);
-            Page.ClientScript.RegisterStartupScript(this.GetType(), "myFunction", "addAnother()", true);
         }
 
         protected void History3_Click(object sender, EventArgs e)
@@ -184,7 +187,7 @@ SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[
                 con.Open();
                 String bquery = "SELECT MarkedPeople FROM[nspj].[dbo].[Bookmark] where EmployerID = @a order by [MarkedPeople]";
                 SqlCommand cmd1 = new SqlCommand(bquery, con);
-                cmd1.Parameters.AddWithValue("@a", (String)Session["ID"]);
+                cmd1.Parameters.AddWithValue("@a", session.SName);
                 using (SqlDataReader dr = cmd1.ExecuteReader())
                 {
 
